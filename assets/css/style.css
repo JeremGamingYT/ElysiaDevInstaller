@@ -1,0 +1,29 @@
+body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+  }
+  
+  h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .btn {
+    width: 250px;
+  }
+  
+  .progress {
+    height: 20px;
+    width: 250px;
+    margin: 0 auto;
+  }
+  
+  .step {
+    border: 1px solid #444;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #statusMessage {
+    font-size: 1.2em;
+  }  

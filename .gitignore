@@ -1,0 +1,9 @@
+# Dossiers de dépendances
+node_modules/
+
+# Fichiers de configuration locaux
+.env
+
+# Dossiers de construction
+dist/
+build/
