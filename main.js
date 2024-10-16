@@ -29,7 +29,7 @@ app.on('window-all-closed', () => {
 })
 
 ipcMain.handle('install-forge', async (event) => {
-  const forgeUrl = 'https://github.com/VotreUtilisateur/VotreDepot/raw/main/installer/forge/forge-installer.jar'
+  const forgeUrl = 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/forge/forge-installer.jar'
   const installerPath = path.join(app.getPath('temp'), 'forge-installer.jar')
   try {
     const response = await axios.get(forgeUrl, { responseType: 'stream' })
@@ -58,8 +58,15 @@ ipcMain.handle('install-forge', async (event) => {
 
 ipcMain.handle('install-mods', async (event) => {
   const mods = [
-    { name: 'mod1.jar', url: 'https://github.com/VotreUtilisateur/VotreDepot/raw/main/installer/mods/mod1.jar' },
-    { name: 'mod2.jar', url: 'https://github.com/VotreUtilisateur/VotreDepot/raw/main/installer/mods/mod2.jar' }
+    { name: 'AmbientSounds_FORGE_v6.1.1_mc1.20.1.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/AmbientSounds_FORGE_v6.1.1_mc1.20.1.jar' },
+    { name: 'Animation_Overhaul-forge-1.20.x-1.3.1.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/Animation_Overhaul-forge-1.20.x-1.3.1.jar' },
+    { name: 'BetterAnimationsCollection-v8.0.0-1.20.1-Forge.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/BetterAnimationsCollection-v8.0.0-1.20.1-Forge.jar' },
+    { name: 'BetterThirdPerson-Forge-1.20-1.9.0.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/BetterThirdPerson-Forge-1.20-1.9.0.jar' },
+    { name: 'BiomesOPlenty-forge-1.20.1-19.0.0.91.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/BiomesOPlenty-forge-1.20.1-19.0.0.91.jar' },
+    { name: 'BuildPasteMod-1.20.1v1.11.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/BuildPasteMod-1.20.1v1.11.jar' },
+    { name: 'ChatNotify-Forge-1.20.1-1.3.0.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/ChatNotify-Forge-1.20.1-1.3.0.jar' },
+    { name: 'Chipped-forge-1.20.1-3.0.6.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/Chipped-forge-1.20.1-3.0.6.jar' },
+    { name: 'Clumps-forge-1.20.1-12.0.0.4.jar', url: 'https://github.com/JeremGamingYT/ElysiaDevInstaller/blob/main/Installer/mods/Clumps-forge-1.20.1-12.0.0.4.jar' }
   ]
   const modsDestPath = path.join(app.getPath('appData'), '.minecraft', 'mods')
 
