@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vos styles personnalisés ici */
 body {
     background-color: #1e1e2f;
     color: #ffffff;
@@ -15,6 +20,10 @@ body {
     height: 20px;
     width: 250px;
     margin: 0 auto;
+  }
+
+  .progress div {
+    transition: width 0.2s ease-in-out;
   }
   
   .step {
