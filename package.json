@@ -1,17 +1,43 @@
 {
   "name": "elysia-dev-installer",
   "version": "1.0.0",
+  "description": "Elysia Dev Installer",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . ElysiaDevInstaller --platform=win32 --arch=x64 --out=dist --overwrite"
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.elysia.devinstaller",
+    "productName": "Elysia Dev Installer",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "package.json",
+      "index.html",
+      "renderer.js",
+      "assets/**"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Elysia Dev Installer"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Elysia Dev Installer",
   "devDependencies": {
-    "electron": "^33.0.0"
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
