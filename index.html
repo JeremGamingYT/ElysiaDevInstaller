@@ -7,29 +7,43 @@
 </head>
 <body class="bg-gray-900 text-white font-sans">
   <div class="container mx-auto mt-10">
-    <div class="max-w-md mx-auto bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg overflow-hidden shadow-lg">
       <div class="px-6 py-4">
-        <h1 class="text-3xl font-bold mb-4 text-center">Elysia Dev Installer</h1>
-        <p class="text-center mb-6">Bienvenue dans l'installateur du serveur moddé Elysia.</p>
-        <div class="space-y-6">
-          <div class="step">
-            <button id="installForge" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Installer Forge
-            </button>
-            <div id="forgeProgress" class="progress mt-2 hidden">
-              <div class="w-0 h-2 bg-blue-500"></div>
-            </div>
+        <h1 class="text-4xl font-bold mb-6 text-center">Elysia Dev Installer</h1>
+        <p class="text-center mb-8">Bienvenue dans l'installateur du serveur moddé Élysia.</p>
+
+        <!-- Section pour Forge -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Installation de Forge</h2>
+          <button id="installForge" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">
+            Installer Forge
+          </button>
+          <div id="forgeProgress" class="progress mt-4 hidden">
+            <div class="w-0 h-2 bg-blue-500"></div>
           </div>
-          <div class="step">
-            <button id="installMods" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-              Installer les Mods
-            </button>
-            <div id="modsProgress" class="progress mt-2 hidden">
-              <div class="w-0 h-2 bg-green-500"></div>
+        </div>
+
+        <!-- Section pour les mods -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4">Installation des Mods</h2>
+          <button id="installMods" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded">
+            Installer les Mods
+          </button>
+          <div id="modsProgress" class="mt-4 hidden">
+            <p id="modName" class="text-lg mb-2"></p>
+            <div class="progress">
+              <div id="modProgressBar" class="w-0 h-2 bg-green-500"></div>
             </div>
           </div>
         </div>
-        <div id="statusMessage" class="mt-6 text-center"></div>
+
+        <!-- Message de statut global -->
+        <div id="statusMessage" class="mt-8 text-center text-lg"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="bg-gray-700 text-center py-4">
+        <p class="text-sm">© 2025 - Élysia</p>
       </div>
     </div>
   </div>

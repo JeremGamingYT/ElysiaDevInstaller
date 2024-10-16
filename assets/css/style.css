@@ -2,37 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Vos styles personnalisés ici */
-body {
-    background-color: #1e1e2f;
-    color: #ffffff;
-  }
-  
-  h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .btn {
-    width: 250px;
-  }
-  
-  .progress {
-    height: 20px;
-    width: 250px;
-    margin: 0 auto;
-  }
+/* Styles personnalisés */
+.progress div {
+  transition: width 0.2s ease-in-out;
+  background-color: #4CAF50;
+  height: 8px;
+  border-radius: 4px;
+}
 
-  .progress div {
-    transition: width 0.2s ease-in-out;
-  }
-  
-  .step {
-    border: 1px solid #444;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  #statusMessage {
-    font-size: 1.2em;
-  }  
+button {
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#modsProgress {
+  transition: all 0.3s ease-in-out;
+}
+
+#modName {
+  margin-bottom: 10px;
+}
+
+#statusMessage {
+  transition: all 0.3s ease-in-out;
+}

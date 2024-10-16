@@ -9,7 +9,7 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 400,
+    width: 800,
     height: 600,
     resizable: false,
     fullscreenable: false,
@@ -30,6 +30,8 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
 
+const execOptions = { maxBuffer: 1024 * 500 }
+
 ipcMain.handle('install-forge', async (event) => {
   const forgeUrl = 'https://raw.githubusercontent.com/JeremGamingYT/ElysiaDevInstaller/main/Installer/forge/forge-installer.jar'
   const installerPath = path.join(app.getPath('temp'), 'forge-installer.jar')
@@ -49,15 +51,14 @@ ipcMain.handle('install-forge', async (event) => {
       writer.on('finish', resolve)
       writer.on('error', reject)
     })
-    // Exécution de l'installateur Forge
-    exec(`java -jar "${installerPath}"`, { maxBuffer: 1024 * 500 }, (error) => {
+    exec(`java -jar "${installerPath}"`, execOptions, (error) => {
       if (error) {
         console.error(`Erreur lors de l'installation de Forge: ${error.message}`)
         event.sender.send('install-forge-reply', { success: false })
       } else {
         event.sender.send('install-forge-reply', { success: true })
       }
-    })    
+    })
   } catch (error) {
     console.error(`Erreur lors du téléchargement de Forge: ${error.message}`)
     event.sender.send('install-forge-reply', { success: false })
@@ -83,15 +84,16 @@ ipcMain.handle('install-mods', async (event) => {
     const desktopPath = app.getPath('desktop')
     const backupModsPath = path.join(desktopPath, 'mods_backup_' + Date.now())
 
-    // Vérifier si le dossier mods existe déjà
     if (await fs.pathExists(modsDestPath)) {
-      // Déplacer le dossier mods existant vers le bureau
       await fs.move(modsDestPath, backupModsPath)
     }
 
     await fs.ensureDir(modsDestPath)
 
     for (const mod of mods) {
+      console.log(`Envoi de l'événement 'mod-start' pour le mod : ${mod.name}`)
+      event.sender.send('mod-start', mod.name)
+
       const modPath = path.join(modsDestPath, mod.name)
       const response = await axios.get(mod.url, { responseType: 'stream' })
       const totalLength = response.headers['content-length']
@@ -114,4 +116,9 @@ ipcMain.handle('install-mods', async (event) => {
     console.error(`Erreur lors de l'installation des mods: ${error.message}`)
     event.sender.send('install-mods-reply', { success: false })
   }
+})
+
+ipcMain.handle('check-existing-mods', async () => {
+  const modsDestPath = path.join(app.getPath('appData'), '.minecraft', 'mods')
+  return await fs.pathExists(modsDestPath)
 })
